@@ -19,5 +19,6 @@ public class User {
     private String phoneNumber;
     private String email;
     @OneToOne
+    @JoinColumn(name = "role_id")
     private Role role;
 }

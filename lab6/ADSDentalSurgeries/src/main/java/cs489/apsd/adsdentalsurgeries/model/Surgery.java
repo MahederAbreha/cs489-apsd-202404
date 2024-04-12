@@ -20,6 +20,6 @@ public class Surgery {
     private String phoneNumber;
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "surgery")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "surgery", fetch = FetchType.EAGER)
     private List<Appointment> appointments;
 }

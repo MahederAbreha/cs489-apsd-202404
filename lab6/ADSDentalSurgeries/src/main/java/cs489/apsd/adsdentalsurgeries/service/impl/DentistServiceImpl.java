@@ -5,6 +5,8 @@ import cs489.apsd.adsdentalsurgeries.repository.DentistRepository;
 import cs489.apsd.adsdentalsurgeries.service.DentistService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DentistServiceImpl implements DentistService {
 
@@ -21,14 +23,15 @@ public class DentistServiceImpl implements DentistService {
     }
 
     @Override
-    public Dentist updateDentist(Dentist editedDentist) {
-        var dentist = dentistRepository.findById(editedDentist.getUserId());
-        if (dentist.isEmpty()) {
-            return null;
-        } else {
-            return dentistRepository.save(editedDentist);
-        }
+    public Dentist updateDentist(Integer dentistId, Dentist editedDentist) {
+        var dentistToUpdate = dentistRepository.findById(dentistId).get();
+        dentistToUpdate.setFullName(editedDentist.getFullName());
+        dentistToUpdate.setPhoneNumber(editedDentist.getPhoneNumber());
+        dentistToUpdate.setEmail(editedDentist.getEmail());
+        dentistToUpdate.setSpeciality(editedDentist.getSpeciality());
+        return dentistRepository.save(dentistToUpdate);
     }
+
 
     @Override
     public void deleteDentist(Integer dentistId) {
@@ -44,10 +47,11 @@ public class DentistServiceImpl implements DentistService {
     @Override
     public Dentist getDentistById(Integer dentistId) {
         var dentist = dentistRepository.findById(dentistId);
-        if (dentist.isPresent()) {
-            return dentist.get();
-        } else {
-            return null;
-        }
+        return dentist.orElse(null);
+    }
+
+    @Override
+    public List<Dentist> getAllDentists() {
+        return dentistRepository.findAll();
     }
 }

@@ -17,7 +17,7 @@ public class Patient extends User{
     private LocalDate dateOfBirth;
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Appointment> appointment;
 
 

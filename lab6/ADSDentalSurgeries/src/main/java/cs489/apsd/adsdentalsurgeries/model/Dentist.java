@@ -15,7 +15,7 @@ import java.util.List;
 public class Dentist extends User{
 
     private String speciality;
-    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Appointment> appointments;
 
 }

@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Table(name = "appointments")
 public class Appointment {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer appointmentId;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "dentist_id")
@@ -26,7 +26,7 @@ public class Appointment {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "surgery_id")
     private Surgery surgery;
-    @DateTimeFormat(pattern = "yyyy-MM-DD 'T' HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-DD HH:mm")
     private LocalDateTime appointmentDateAndTime;
 
 }
