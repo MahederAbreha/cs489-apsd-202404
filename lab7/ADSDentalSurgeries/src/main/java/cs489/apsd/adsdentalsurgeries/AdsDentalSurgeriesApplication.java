@@ -39,23 +39,23 @@ public class AdsDentalSurgeriesApplication implements CommandLineRunner {
 		roleRepository.save(new Role(3, RoleType.PATIENT));
 
 
-		var surgery1 = new Surgery(null, "Dental Clinic", "641-472-2345", new Address(null, "1000 Main St", "Fairfield", "Iowa", "52556"), List.of());
-		var patient1 = new Patient(LocalDate.of(1990, 1, 1), null, null);
-		var dentist1 = new Dentist("Orthodontist", null);
-		var user = new User(null, "Office Manager", "641-222-3332", "manager@surgery1.com", roleRepository.findById(1).get());
-		patient1.setFullName("John Doe");
-		patient1.setPhoneNumber("641-345-9780");
-		patient1.setEmail("jd@email.com");
-		patient1.setRole(roleRepository.findById(3).get());
-
-		dentist1.setFullName("Dr. Smith");
-		dentist1.setPhoneNumber("641-123-3451");
-		dentist1.setEmail("drsmith@email.com");
-		dentist1.setRole(roleRepository.findById(2).get());
-		var appointment1 = new Appointment(null, dentist1, patient1, surgery1, LocalDateTime.of(2021, 12, 1, 10, 30));
-
-
-		appointmentService.addNewAppointment(appointment1);
+//		var surgery1 = new Surgery(null, "Dental Clinic", "641-472-2345", new Address(null, "1000 Main St", "Fairfield", "Iowa", "52556"), List.of());
+//		var patient1 = new Patient(LocalDate.of(1990, 1, 1), null, null);
+//		var dentist1 = new Dentist("Orthodontist", null);
+//		var user = new User(null, "Office Manager", "641-222-3332", "manager@surgery1.com", roleRepository.findById(1).get());
+//		patient1.setFullName("John Doe");
+//		patient1.setPhoneNumber("641-345-9780");
+//		patient1.setEmail("jd@email.com");
+//		patient1.setRole(roleRepository.findById(3).get());
+//
+//		dentist1.setFullName("Dr. Smith");
+//		dentist1.setPhoneNumber("641-123-3451");
+//		dentist1.setEmail("drsmith@email.com");
+//		dentist1.setRole(roleRepository.findById(2).get());
+//		var appointment1 = new Appointment(null, dentist1, patient1, surgery1, LocalDateTime.of(2021, 12, 1, 10, 30));
+//
+//
+//		appointmentService.addNewAppointment(appointment1);
 
 	}
 
