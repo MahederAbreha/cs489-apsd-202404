@@ -5,12 +5,13 @@ import cs489.apsd.adsdentalsurgeries.model.Role;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 public record PatientRecord(
         String fullName,
         String phoneNumber,
         String email,
-        List<Role> role,
+        Set<Role> roles,
         LocalDate dateOfBirth,
         Address address ) {
 

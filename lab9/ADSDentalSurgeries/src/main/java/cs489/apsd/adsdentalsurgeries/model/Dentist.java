@@ -11,12 +11,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "roles")
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer RoleId;
-    private RoleType roleType;
-    @ManyToMany(mappedBy = "role")
-    private List<User> user;
+@Table(name = "dentists")
+public class Dentist extends User{
+
+    private String speciality;
+    @OneToMany(mappedBy = "dentist", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Appointment> appointments;
+
 }

@@ -5,7 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -17,6 +18,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer RoleId;
     private RoleType roleType;
-    @ManyToMany(mappedBy = "role")
-    private List<User> user;
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    private Set<User> users = new HashSet<>();
+
 }

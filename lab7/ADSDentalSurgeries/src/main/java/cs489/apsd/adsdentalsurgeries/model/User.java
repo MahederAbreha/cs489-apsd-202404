@@ -5,10 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "users")
+@Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Table(name = "users")
 public class User {
@@ -18,7 +20,11 @@ public class User {
     private String fullName;
     private String phoneNumber;
     private String email;
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "role_id")
-    private Role role;
+    @ManyToMany( cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<Role> role;
 }

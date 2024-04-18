@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/patients")
+@RequestMapping(value = {"/patients"})
 public class PatientController {
 
     PatientService patientService;
@@ -23,7 +23,7 @@ public class PatientController {
         return patientService.getAllPatients();
 
     }
-    @PostMapping("/")
+    @PostMapping("/register")
     public ResponseEntity<PatientRecord> addPatient(@RequestBody PatientRecord patientRecord) {
         return ResponseEntity.ok(patientService.addNewPatient(patientRecord));
     }
