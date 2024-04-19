@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  ads-db:
+    container_name: ads-db
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: new_schema
+    ports:
+      - "3307:3306"
+    volumes:
+        - ./mysql:/var/lib/mysql
+  ads-app:
+    build: .
+    ports:
+      - "8070:8080"
+    depends_on:
+      - ads-db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://ads-db:3306/new_schema
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
